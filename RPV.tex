@@ -1,0 +1,88 @@
+
+%%%%%%%%%%%%%%%%%%%%%% Feynman diagram for RPV
+
+\documentclass{article}
+
+\input{shared/header.tex}
+
+\def\MainQuark{t}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Document %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\thispagestyle{empty}
+
+
+%%%%%%%% THE NAME OF THE fmffile HAS TO BE ``Feynman<filename>'' TO USE compile.py %%%%%%%%%%%%%%%
+\begin{fmffile}{FeynmanRPV}
+\parbox{500mm}{
+    
+\begin{fmfgraph*}(180,90) %\fmfpen{thick}
+  \fmfset{arrow_len}{cm}\fmfset{arrow_ang}{0}
+  
+  %%%%%%%%%%%% Specifying number of inputs/outputs
+  \fmfleftn{i}{2}
+  \fmfrightn{o}{8}
+  \fmflabel{}{i1}
+  \fmflabel{}{i2}
+    
+  %%%%%%%%%%%% Incoming protons (one line)
+  \fmf{fermion, tension=7., lab=p, label.side=right}{v1,i1}
+  \fmf{fermion, tension=7., lab=p, label.side=left}{v1,i2}
+           
+  %%%%%%%%%%%% Produced SUSY particles
+  \fmf{dashes, tension=4., label=\sTopb, label.side=right}{v1,v2}
+  \fmf{dashes, tension=4., label=\sTop, label.side=left}{v1,v3}
+  
+  %%%%%%%%%%%%% Decays and vertex circles
+
+  %% 1st stop decay
+  \fmf{vanilla, tension=3., label=\chiz, label.side=right}{v2,v4}
+  \fmf{boson, tension=3.}{v2,v4}
+  
+  %% 1st neutralino decay
+  \fmf{dashes, tension=3., label=$\mathrm{\widetilde{q}}^\prime$, label.side=right}{v4,v6}
+  
+  \fmf{fermion}{v6,o1} 
+  \fmflabel{$\mathrm{\overline{q}}$}{o1}
+  
+  \fmf{fermion}{v6,o2} 
+  \fmflabel{$\mathrm{\overline{q}}$}{o2}
+  
+  \fmf{fermion}{v4,o3} 
+  \fmflabel{q}{o3}
+  
+  \fmf{fermion}{v2,o4}
+  \fmflabel{$\mathrm{\overline{\MainQuark}}$}{o4}
+  
+  %% 2nd stop decay
+  \fmf{vanilla, tension=3., label=\chiz, label.side=left}{v3,v5}
+  \fmf{boson, tension=3.}{v3,v5}
+
+  %% 2nd neutralino decay
+  \fmf{dashes, tension=3., label=$\mathrm{\widetilde{q}}^\prime$, label.side=left}{v5,v7}
+  
+  \fmf{fermion}{v3,o5}
+  \fmflabel{\MainQuark}{o5}
+  
+  \fmf{fermion}{v5,o6} 
+  \fmflabel{q}{o6}
+
+  \fmf{fermion}{v7,o7} 
+  \fmflabel{$\mathrm{\overline{q}}$}{o7}
+
+  \fmf{fermion}{v7,o8}
+  \fmflabel{$\mathrm{\overline{q}}$}{o8}
+  
+  %% Vertex circles
+  \fmfdot{v2,v3,v4,v5,v6,v7}
+  
+  %%%%%%%%%%%% Additional lines on incoming protons and blob
+  \input{shared/protons.tex}
+  
+\end{fmfgraph*}
+
+}           
+\end{fmffile} 
+
+\end{document}
