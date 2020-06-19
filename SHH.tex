@@ -1,5 +1,5 @@
 
-%%%%%%%%%%%%%%%%%%%%%% Feynman diagram for RPV
+%%%%%%%%%%%%%%%%%%%%%% Feynman diagram for SHH
 
 \documentclass{article}
 
@@ -14,7 +14,7 @@
 
 
 %%%%%%%% THE NAME OF THE fmffile HAS TO BE ``Feynman<filename>'' TO USE compile.py %%%%%%%%%%%%%%%
-\begin{fmffile}{FeynmanRPV}
+\begin{fmffile}{FeynmanSHH}
 \parbox{500mm}{
     
 \begin{fmfgraph*}(180,140) %\fmfpen{thick}
@@ -27,52 +27,56 @@
   \fmflabel{}{i2}
     
   %%%%%%%%%%%% Incoming protons (one line)
-  \fmf{fermion, tension=7., lab=p, label.side=right}{v1,i1}
-  \fmf{fermion, tension=7., lab=p, label.side=left}{v1,i2}
+  \fmf{fermion, tension=22., lab=p, label.side=right}{v1,i1}
+  \fmf{fermion, tension=22., lab=p, label.side=left}{v1,i2}
            
   %%%%%%%%%%%% Produced SUSY particles
-  \fmf{dashes, tension=4., label=\stopb, label.side=right}{v1,v2}
-  \fmf{dashes, tension=4., label=\stop, label.side=left}{v1,v3}
+  \fmf{dashes, tension=15., label=\stopb, label.side=right}{v1,v2}
+  \fmf{dashes, tension=15., label=\stop, label.side=left}{v1,v3}
   
   %%%%%%%%%%%%% Decays and vertex circles
 
   %% 1st stop decay
-  \fmf{vanilla, tension=3., label=\chiz, label.side=right}{v2,v4}
+  \fmf{vanilla, tension=7., label=\susy{S}, label.side=right}{v2,v4}
   \fmf{boson, tension=3.}{v2,v4}
+  %\fmf{gluon, tension=3.}{v2,o4}
+  %\fmflabel{g}{o4}
   
-  %% 1st neutralino decay
-  \fmf{dashes, tension=3., label=$\mathrm{\widetilde{q}}^\prime$, label.side=right}{v4,v6}
-  
-  \fmf{fermion}{v6,o1} 
-  \fmflabel{q}{o1}
+  %% 1st singlino decay
+  \fmf{dashes, tension=3., label=S, label.side=left}{v4,v6}
+
+  \fmf{fermion, tension=7.}{v4,o1}
+  \fmflabel{\susy{G}}{o1}
   
   \fmf{fermion}{v6,o2} 
-  \fmflabel{q}{o2}
+  \fmflabel{\anti{b}}{o2}
   
-  \fmf{fermion}{v4,o3} 
-  \fmflabel{q}{o3}
+  \fmf{fermion}{v6,o3} 
+  \fmflabel{b}{o3}
   
   \fmf{fermion}{v2,o4}
   \fmflabel{$\mathrm{\overline{\MainQuark}}$}{o4}
   
   %% 2nd stop decay
-  \fmf{vanilla, tension=3., label=\chiz, label.side=left}{v3,v5}
+  \fmf{vanilla, tension=7., label=\susy{S}, label.side=left}{v3,v5}
   \fmf{boson, tension=3.}{v3,v5}
+  %\fmf{gluon, tension=3.}{v3,o6}
+  %\fmflabel{g}{o6}
 
-  %% 2nd neutralino decay
-  \fmf{dashes, tension=3., label=$\mathrm{\widetilde{q}}^\prime$, label.side=left}{v5,v7}
-  
+  %% 2nd singlino decay
+  \fmf{dashes, tension=3., label=S, label.side=right}{v5,v7}
+
   \fmf{fermion}{v3,o5}
   \fmflabel{\MainQuark}{o5}
-  
-  \fmf{fermion}{v5,o6} 
-  \fmflabel{q}{o6}
 
-  \fmf{fermion}{v7,o7} 
-  \fmflabel{q}{o7}
+  \fmf{fermion}{v7,o6} 
+  \fmflabel{\anti{b}}{o6}
 
-  \fmf{fermion}{v7,o8}
-  \fmflabel{q}{o8}
+  \fmf{fermion}{v7,o7}
+  \fmflabel{b}{o7}
+
+  \fmf{fermion, tension=7.}{v5,o8}
+  \fmflabel{\susy{G}}{o8}
   
   %% Vertex circles
   \fmfdot{v2,v3,v4,v5,v6,v7}
